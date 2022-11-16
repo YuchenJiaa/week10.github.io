@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8" />
 	<title>Object Prototypes | COMP1073 Client-Side JavaScript</title>
@@ -10,12 +11,18 @@
 
 <body>
 	<!-- STEP 1: Build out a HEADER and a SECTION element -->
-<!-- for test -->
+	<header>
+
+	</header>
+	<section>
+
+	</section>
 	<script>
 		/* STEP 2: Bind the HEADER and the SECTION elements above to variables */
-
+		var header = document.querySelector('header');
+		var section = document.querySelector('section');
 		/* STEP 3: Store the URL of a JSON file in a variable */
-		var requestURL = "https://github.com/YuchenJiaa/week10.github.io/blob/main/js/i-scream.json";
+		var requestURL = "https://raw.githubusercontent.com/YuchenJiaa/week10.github.io/main/js/i-scream.json";
 		/* STEP 4: Create a new XHR object */
 		let request = new XMLHttpRequest();
 		/* STEP 5: Open a new request using the request() method */
@@ -25,46 +32,48 @@
 		/* STEP 7: Send the request with the send() method */
 		request.send();
 		/* STEP 8: Add an event handler that listens for the onload event of the JSON file/object */
-		request.onload=function(){
-			let isScreamInc = request.response;
-			console.log(isScreamInc);
+		request.onload = function () {
+			let iScreamInc = request.response;
+			console.log(iScreamInc);
+			populateHeader(iScreamInc);
+			topFlavors(iScreamInc);
 		}
 		/* STEP 9: Build out the populateHeader() function */
-		function populateHeader(jsonObj){
+		function populateHeader(jsonObj) {
 			//grab the campany name
 			let headerH1 = document.createElement('h1');
-			headerH1.textContent=jsonObj['companyName'];
+			headerH1.textContent = jsonObj['companyName'];
 			header.appendChild(headerH1);
 			//grab the company location and established date
-			let  headerPara = document.createElement('p');
+			let headerPara = document.createElement('p');
 			headerPara.textContent = 'Head office: ' + jsonObj['headOffice'] + ' Established: ' + jsonObj['established'];
 			header.appendChild(headerPara);
 		}
 		/* STEP 10a: Assemble the showTopFlavors() function */
-		function topFlavors(jsonObj){
+		function topFlavors(jsonObj) {
 
-		
+
 			// STEP 10b: Bind the JSON topFlavors object to a var
 			let topflavors = jsonObj['topFlavors'];
 			// STEP 10c: Loop through the topFlavors object
-			for(let i=0; i<topFlavors.length;i++){
+			for (let i = 0; i < topflavors.length; i++) {
 
 				// STEP 10d: build HTML elements for the content
-				let artical = document.createElement('article');
+				let article = document.createElement('article');
 				let h2 = document.createElement('h2');
 				let img = document.createElement('img');
 				let p1 = document.createElement('p1');
 				let p2 = document.createElement('p2');
 				let list = document.createElement('ul');
 				// STEP 10e: Set the textContent property for each of the above elements (except the UL), based on the JSON content
-				img.setAttribute('src', 'https://github.com/YuchenJiaa/week10.github.io/tree/main/images' +topFlavors[i].image);
-				img.setAttribute('alt', topFlavors[i].name);
-				h2.textContent = topFlavors[i].name;
-				p1.textContent = 'Calories: ' + topFlavors[i].calories;
-				p2.textContent = 'Type: ' + topFlavors[i].type;
+				img.setAttribute('src', 'https://raw.githubusercontent.com/YuchenJiaa/week10.github.io/main/images/' + topflavors[i].image);
+				img.setAttribute('alt', topflavors[i].name);
+				h2.textContent = topflavors[i].name;
+				p1.textContent = 'Calories: ' + topflavors[i].calories;
+				p2.textContent = 'Type: ' + topflavors[i].type;
 				// STEP 10f: Build a loop for the ingredients array in the JSON
-				let ingredients = topFlavors[i].ingredients;
-				for(let j=0; j<ingredients.length; j++){
+				let ingredients = topflavors[i].ingredients;
+				for (let j = 0; j < ingredients.length; j++) {
 					let listItem = document.createElement('li');
 					//set text for each item
 					listItem.textContent = ingredients[j];
@@ -78,13 +87,14 @@
 				article.appendChild(p1);
 				article.appendChild(p2);
 				article.appendChild(list);
-				section.appendChild(artucle);
+				section.appendChild(article);
 			}
 		}
 
 		// This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
 
 		// A special thanks to https://openclipart.org/detail/285225/ice-cream-cones for the awesome ice cream cone illustrations
-		</script>
-	</body>
+	</script>
+</body>
+
 </html>

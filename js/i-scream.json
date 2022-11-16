@@ -36,6 +36,28 @@
         "candy sprinkles"
       ],
       "image": "strawberry-sprinkle.svg"
+    },
+    {
+      "name": "Raspberry Cheesecake",
+      "calories": 508,
+      "type": "ice cream",
+      "ingredients": [
+        "raspberry",
+        "cream cheese",
+        "heavy cream"
+      ],
+      "image": "ice-cream-xtra1.svg"
+    },
+    {
+      "name": "Cookie and Cream",
+      "calories": 361,
+      "type": "ice cream",
+      "ingredients": [
+        "oreos",
+        "vanilla extract",
+        "whole milk"
+      ],
+      "image": "ice-cream-xtra2.svg"
     }
   ]
 }

@@ -11,10 +11,16 @@
 
 <body>
 	<!-- STEP 1: Build out a HEADER and a SECTION element -->
-<!-- for test -->
+	<header>
+
+	</header>
+	<section>
+
+	</section>
 	<script>
 		/* STEP 2: Bind the HEADER and the SECTION elements above to variables */
-
+		var header = document.querySelector('header');
+		var section = document.querySelector('section');
 		/* STEP 3: Store the URL of a JSON file in a variable */
 		var requestURL = "https://raw.githubusercontent.com/YuchenJiaa/week10.github.io/main/js/i-scream.json";
 		/* STEP 4: Create a new XHR object */
@@ -26,9 +32,11 @@
 		/* STEP 7: Send the request with the send() method */
 		request.send();
 		/* STEP 8: Add an event handler that listens for the onload event of the JSON file/object */
-		request.onload=function(){
-			let isScreamInc = request.response;
-			console.log(isScreamInc);
+		request.onload = function () {
+			let iScreamInc = request.response;
+			console.log(iScreamInc);
+			populateHeader(iScreamInc);
+			topFlavors(iScreamInc);
 		}
 		/* STEP 9: Build out the populateHeader() function */
 		function populateHeader(jsonObj) {

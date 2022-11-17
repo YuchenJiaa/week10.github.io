@@ -27,15 +27,14 @@ header p {
 
 /* section styles */
 section {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 5rem;
+	display: grid;
+	grid-template-columns: auto auto;
 }
 section article {
 	border: 1px solid black;
 	box-shadow: 0 2px 14px grey;
 	padding: 2.5%;
-	width: 25%
+	width: auto;
 }
 article img {
 	display: block;
